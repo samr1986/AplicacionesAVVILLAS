@@ -1,0 +1,40 @@
+extends layout
+append styles
+	link(href='/css/navbar-static-top.css', rel='stylesheet')
+append body
+	.container
+		p #{titulo}
+		label(id='lblmensaje')
+		.row
+			.col-xs-12
+				.table-responsive
+					table.table(id="TblSubExcep")
+						thead.thead-dark
+							tr  
+								th.col #
+								th(data-field='FecIngresoEta') F.Asig.
+								th(data-field='HoraReporteEtapa') H.Asig.
+								th(data-field='TipoOperacion') T.Operacion
+								th(data-field='Modalidad') Modalidad
+								th(data-field='NroSolicitud') Solicitud
+								th(data-field='RegionalCCIAL') Reg.
+								th(data-field='TamEmpresa') Tamaño
+								th(data-field='TipoID') T.Ident.
+								th(data-field='ID') Nro Ident.
+								th(data-field='NomCliente') Nombre
+								th(data-field='ValorSolicitado') Vlr Solicitado
+								th(data-field='DesExcep') Excepción 
+						tbody
+							each excep,index in datos.consulta
+								tr
+									td #{index + 1}
+									- let datosllamada = "'" + excep.Modalidad + "','" + excep.TipoOperacion + 	"','" + excep.NroSolicitud + "'";
+									each val,index2 in excep
+										if index2 == 'NroSolicitud'
+											td
+												a(onclick="onAClick(" + datosllamada + ")") #{val}
+										else
+											td #{val}
+		form(action="/SubsanarExcepciones", method="post", id="FormConsultarUtilizaciones")
+			input(type="hidden",id='EnvioDatos',name='EnvioDatos')
+			button.btn-link(type='submit',value=val)

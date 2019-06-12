@@ -1,0 +1,18 @@
+extends layout
+append styles
+	// Custom styles for this template
+	link(href='css/signin.css', rel='stylesheet')
+append body
+	.container
+		p #{mensaje}
+		form.form-signin(action="/", method="post")
+			h2.form-signin-heading Por favor registrese
+			label.sr-only(for='inputId') Nro de cédula
+			input#inputId.form-control(type='text',name="usuario", placeholder='Nro de cédula', required='', autofocus='')
+			label.sr-only(for='inputPassword') Contraseña
+			input#inputPassword.form-control(type='password', name="password", placeholder='Contraseña', required='')
+			//.checkbox
+				label
+					input(type='checkbox', value='remember-me')
+					|	Remember me
+			button.btn.btn-lg.btn-primary.btn-block(type='submit') Registro

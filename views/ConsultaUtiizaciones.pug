@@ -1,0 +1,106 @@
+extends layout
+
+append body
+	.container
+		p #{titulo}
+		.row
+			.col-xs-12
+				.table-responsive
+					table.table.table-bordered.table-hover(name="tblDatosUtilizaciones",summary="Esta tabla carga los datos de las utilizaciones")
+						caption.text-center  Datos de la empresa
+						thead
+							tr
+								th Tipo identificacion
+								th Nro identificacion
+								th Nombre
+								th Tamaño
+						tbody
+							tr
+								td #{datos.TipoIdentificacion}
+								td #{datos.NumeroIdentificacion}
+								td #{datos.nombre}
+								td #{datos.tamEmpresa}
+				.table-responsive
+					table.table.table-bordered.table-hover(name="tblDatosSolicitud",summary="Esta tabla carga los datos de las utilizaciones")
+						caption.text-center  Datos de la Solicitud
+						tbody
+							tr
+								td Nro de Solicitud:
+								td #{datos.NumeroSolicitud}
+								td Tipo Operacion:
+								td #{datos.TipoOperacion}
+								td Modalidad:
+								td #{datos.Modalidad}
+							tr
+								td Monto:
+								td #{datos.Monto}
+								td Amortizacion K:
+								td #{datos.AmortK}
+								td Periodo de Gracia K:
+								td #{datos.PerGraK}
+							tr
+								td Plazo:
+								td #{datos.Plazo}
+								td Amortizacion I:
+								td #{datos.AmortI}
+								td Periodo de Gracia I:
+								td #{datos.PerGraI}
+							tr
+								td Tasa:
+								td #{datos.Tasa}
+								td 
+								td 
+								td 
+								td 
+							tr
+								td Numero de Pre-excepción GAP:
+								td #{datos.NPreExecGAP}
+								td Codigo de Cartera:
+								td #{datos.CodCarte}
+								td 
+								td
+							tr
+								td Estado:
+								td #{datos.Estado}
+								td Convenio Factoring:
+								td #{datos.ConvFactoring}
+								td 
+								td
+							tr
+								td Serial Carta Intención:
+								td #{datos.SerialCartaIntencion}
+								td Serial Carta Instrucción:
+								td #{datos.SerialCartaInstruccion}
+								td 
+								td 
+							tr
+								td Serial Pagaré:
+								td #{datos.SerialPagare}
+								td Serial Seguro de Vida:
+								td #{datos.SerialSegVida}
+								td Serial Contrato:
+								td #{datos.SerialContrato}
+							tr
+								td Serial FNG:
+								td #{datos.SerialFNG}
+								td Reserva FNG:
+								td #{datos.ReservaFNG}
+								td 
+								td 
+				.table-responsive
+					table.table.table-bordered.table-hover(name="tblExecVoBo",summary="Esta tabla carga las excepciones y vistos buenos")
+						caption.text-center  Excepciones/Vistos Buenos
+						thead
+							tr
+								th Código
+								th Execpción
+								th Estado
+						tbody
+							each excep,index in datos.ConsCodExcep
+								tr
+									td #{index + 1}
+									td #{excep.Descripcion}
+									td #{excep.Estado}
+		
+
+
