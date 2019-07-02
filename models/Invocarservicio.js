@@ -1,8 +1,9 @@
 let request = require('sync-request');
-module.exports.invocarServicio = function(url, path) {
+module.exports.invocarServicio = function(metodo, url, opciones) {
     let response = request(
-        'GET',
-        url + path
+        metodo,
+        url,
+        opciones
     );
     return response.body;
 };

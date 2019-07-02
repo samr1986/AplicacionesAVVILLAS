@@ -7,9 +7,9 @@ let login = module.exports = loginSchema;*/
 let InvocaRestService = require("../models/Invocarservicio");
 
 module.exports.Logueo = function(usu, pass) {
-    let url = 'https://ws-rest-creditoempresarial.azurewebsites.net';
-    let path = '/login?usuario=1022327142&password=melo';
-    let respuestaLogin = InvocaRestService.invocarServicio(url, path);
+    let metodo = 'GET'
+    let url = 'https://ws-rest-creditoempresarial.azurewebsites.net/login?usuario=' + usu + '&password=' + pass;
+    let respuestaLogin = InvocaRestService.invocarServicio(metodo, url);
     return respuestaLogin;
     /*login.usuario = usu;
     login.password = pass;*/
