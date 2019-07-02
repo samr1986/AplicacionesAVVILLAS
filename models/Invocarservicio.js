@@ -5,5 +5,5 @@ module.exports.invocarServicio = function(metodo, url, opciones) {
         url,
         opciones
     );
-    return response.body;
+    return JSON.parse(response.body);
 };
