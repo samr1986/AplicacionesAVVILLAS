@@ -19,6 +19,8 @@
     "jade-bootstrap": "^1.0.14",
     "mongoose": "^5.5.14",
     "morgan": "^1.9.1",
-    "pug": "^2.0.3"
+    "pug": "^2.0.3",
+    "request": "^2.88.0",
+    "sync-request": "^6.1.0"
   }
 }
