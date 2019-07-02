@@ -4,5 +4,5 @@ module.exports.invocarServicio = function(url, path) {
         'GET',
         url + path
     );
-    return response.body.data;
+    return response.body;
 };
