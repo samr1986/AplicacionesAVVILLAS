@@ -25,7 +25,7 @@ append body
 								th(data-field='ValorSolicitado') Vlr Solicitado
 								th(data-field='DesExcep') Excepción 
 						tbody
-							each excep,index in datos
+							each excep,index in datos.consulta
 								tr
 									td #{index + 1}
 									- let datosllamada = "'" + excep.Modalidad + "','" + excep.TipoOperacion + 	"','" + excep.NroSolicitud + "'";

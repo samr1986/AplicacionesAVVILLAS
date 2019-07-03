@@ -4,7 +4,22 @@ module.exports.FncConsultarExcep = function(ID) {
     let url = 'https://ws-rest-creditoempresarial.azurewebsites.net/subsanarExcepciones?colaboradorResponsable=' + ID;
     let respuestaSubsanarExcepciones = InvocaRestService.invocarServicio(metodo, url);
     if (respuestaSubsanarExcepciones.salida.codigoRespuesta == 0) {
-        return respuestaSubsanarExcepciones.salida.ExcepcionesSubsables;
+        let datosRet = { consulta: [] };
+        for (let i = 0; i < respuestaSubsanarExcepciones.salida.ExcepcionesSubsables.length; i++) {
+            datosRet.consulta[i].FecIngresoEta = respuestaSubsanarExcepciones.salida.ExcepcionesSubsables[i].FecIngresoEta;
+            datosRet.consulta[i].HoraReporteEtapa = respuestaSubsanarExcepciones.salida.ExcepcionesSubsables[i].HoraReporteEtapa;
+            datosRet.consulta[i].TipoOperacion = respuestaSubsanarExcepciones.salida.ExcepcionesSubsables[i].TipoOperacion;
+            datosRet.consulta[i].Modalidad = respuestaSubsanarExcepciones.salida.ExcepcionesSubsables[i].Modalidad;
+            datosRet.consulta[i].NroSolicitud = respuestaSubsanarExcepciones.salida.ExcepcionesSubsables[i].NroSolicitud;
+            datosRet.consulta[i].RegionalCCIAL = respuestaSubsanarExcepciones.salida.ExcepcionesSubsables[i].RegionalCCIAL;
+            datosRet.consulta[i].TamEmpresa = respuestaSubsanarExcepciones.salida.ExcepcionesSubsables[i].TamEmpresa;
+            datosRet.consulta[i].TipoID = respuestaSubsanarExcepciones.salida.ExcepcionesSubsables[i].TipoID;
+            datosRet.consulta[i].ID = respuestaSubsanarExcepciones.salida.ExcepcionesSubsables[i].ID;
+            datosRet.consulta[i].NomCliente = respuestaSubsanarExcepciones.salida.ExcepcionesSubsables[i].NomCliente;
+            datosRet.consulta[i].ValorSolicitado = respuestaSubsanarExcepciones.salida.ExcepcionesSubsables[i].ValorSolicitado;
+            datosRet.consulta[i].DesExcep = respuestaSubsanarExcepciones.salida.ExcepcionesSubsables[i].DesExcep;
+        }
+        return;
     } else {
         return {};
     }
