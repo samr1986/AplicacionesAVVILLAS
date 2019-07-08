@@ -163,7 +163,7 @@ module.exports.FncConsultarUtiliza = function(Modalidad, TipoOperacion, NSolicit
 
     } else {
         let ConsultaUtilizacionesSchema = {
-            TipoIdentificacion: 'cod resp' + respuestaSubsanarExcepciones.salida.codigoRespuesta,
+            TipoIdentificacion: 'cod resp' + respuestaSubsanarExcepciones.salida.codigoRespuesta + ' ' + url,
             NumeroIdentificacion: '850133065',
             nombre: 'Empresa xxxx',
             tamEmpresa: 'CORPORATIVA I',
