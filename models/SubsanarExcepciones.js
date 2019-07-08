@@ -36,64 +36,124 @@ module.exports.FncConsultarUtiliza = function(Modalidad, TipoOperacion, NSolicit
         if (respuestaSubsanarExcepciones.salida.Utilizaciones.length == 1) {
             let ConsultaUtilizacionesSchema = {
                 TipoIdentificacion: respuestaSubsanarExcepciones.salida.Utilizaciones[0].Kl60_tipo_Identificacion,
-                NumeroIdentificacion: '850133065',
-                nombre: 'Empresa xxxx',
-                tamEmpresa: 'CORPORATIVA I',
-                NumeroSolicitud: '',
-                TipoOperacion: '',
-                Modalidad: '',
-                Monto: '10000000',
-                AmortK: '',
-                PerGraK: '',
-                Plazo: '20 dias',
-                AmortI: '',
-                PerGraI: '',
-                Tasa: 'politica + .00%',
-                NPreExecGAP: '0',
-                CodCarte: '0',
-                Estado: 'Desembolsada',
-                ConvFactoring: '0',
-                SerialCartaIntencion: '0',
-                SerialCartaInstruccion: '0',
-                SerialPagare: '9467004958',
-                SerialSegVida: '0',
-                SerialContrato: '0',
-                SerialFNG: '0',
-                ReservaFNG: '0',
+                NumeroIdentificacion: respuestaSubsanarExcepciones.salida.Utilizaciones[0].Kl60_Nro_Identificacion,
+                nombre: respuestaSubsanarExcepciones.salida.Utilizaciones[0].Kl52_Nom_Empresa,
+                tamEmpresa: respuestaSubsanarExcepciones.salida.Utilizaciones[0].Kl52_Tamano_Empresa,
+                NumeroSolicitud: respuestaSubsanarExcepciones.salida.Utilizaciones[0].Ki60_Numero_Credito_Tot,
+                TipoOperacion: respuestaSubsanarExcepciones.salida.Utilizaciones[0].Kl60_Tipo_Operacion,
+                Modalidad: respuestaSubsanarExcepciones.salida.Utilizaciones[0].Kl60_modalidad,
+                Monto: respuestaSubsanarExcepciones.salida.Utilizaciones[0].Kl60_Monto,
+                AmortK: respuestaSubsanarExcepciones.salida.Utilizaciones[0].Kl60_Amortizacion,
+                PerGraK: respuestaSubsanarExcepciones.salida.Utilizaciones[0].Kl60_Gracia_Capital,
+                Plazo: respuestaSubsanarExcepciones.salida.Utilizaciones[0].Kl60_Plazo,
+                AmortI: '0', //falto migrar el dato
+                PerGraI: respuestaSubsanarExcepciones.salida.Utilizaciones[0].Kl60_Gracia_Intereses,
+                Tasa: respuestaSubsanarExcepciones.salida.Utilizaciones[0].Kl60_Tasa_Base,
+                NPreExecGAP: '0', //falto migrar el dato
+                CodCarte: respuestaSubsanarExcepciones.salida.Utilizaciones[0].Kl60_Cod_Cartera,
+                Estado: respuestaSubsanarExcepciones.salida.Utilizaciones[0].Kl60_Estado,
+                ConvFactoring: respuestaSubsanarExcepciones.salida.Utilizaciones[0].KL60_SERIAL_CONVENIO_FACT,
+                SerialCartaIntencion: respuestaSubsanarExcepciones.salida.Utilizaciones[0].SERIAL_CARTA_INTEN,
+                SerialCartaInstruccion: respuestaSubsanarExcepciones.salida.Utilizaciones[0].SERIAL_CARTA_INTRUC,
+                SerialPagare: respuestaSubsanarExcepciones.salida.Utilizaciones[0].SERIAL_PAGARE,
+                SerialSegVida: respuestaSubsanarExcepciones.salida.Utilizaciones[0].SERIAL_SEG_VIDA,
+                SerialContrato: respuestaSubsanarExcepciones.salida.Utilizaciones[0].SERIAL_CONTRATO_CCTE,
+                SerialFNG: respuestaSubsanarExcepciones.salida.Utilizaciones[0].SERIAL_ACEPTACION_FNG,
+                ReservaFNG: respuestaSubsanarExcepciones.salida.Utilizaciones[0].RESERVA_FNG,
                 ConsCodExcep: [{
                     Descripcion: 'Cupo vencido',
-                    Estado: 'OK'
+                    Estado: respuestaSubsanarExcepciones.salida.Utilizaciones[0].IND_EXCEP_VENCIMIENTO
                 }, {
                     Descripcion: 'Extracupo por grupo',
-                    Estado: 'OK'
+                    Estado: respuestaSubsanarExcepciones.salida.Utilizaciones[0].IND_EXCEP_LEA_GRUPO
                 }, {
                     Descripcion: 'Extracupo por empresa',
-                    Estado: 'OK'
+                    Estado: respuestaSubsanarExcepciones.salida.Utilizaciones[0].IND_EXCEP_LEA_EMPRESA
                 }, {
                     Descripcion: 'Extracupo por cupo',
-                    Estado: 'OK'
+                    Estado: respuestaSubsanarExcepciones.salida.Utilizaciones[0].IND_EXCEP_LEA_CUPO
                 }, {
                     Descripcion: 'Extracupo por línea',
-                    Estado: 'OK'
+                    Estado: respuestaSubsanarExcepciones.salida.Utilizaciones[0].IND_EXCEP_LEA_LINEA
                 }, {
                     Descripcion: 'Período de gracia capital solicitado > período de gracia aprobado',
-                    Estado: 'OK'
+                    Estado: respuestaSubsanarExcepciones.salida.Utilizaciones[0].IND_EXCEP_GRACIA_K
                 }, {
                     Descripcion: 'Período de gracia interés solicitado > período de gracia aprobado',
-                    Estado: 'OK'
+                    Estado: respuestaSubsanarExcepciones.salida.Utilizaciones[0].IND_EXCEP_GRACIA_I
                 }, {
                     Descripcion: 'Plazo solicitado > plazo aprobado',
-                    Estado: 'OK'
+                    Estado: respuestaSubsanarExcepciones.salida.Utilizaciones[0].IND_EXCEP_PLAZO
                 }, {
                     Descripcion: 'Forma pago capital > forma de pago aprobada',
-                    Estado: 'OK'
+                    Estado: respuestaSubsanarExcepciones.salida.Utilizaciones[0].IND_EXCEP_AMORTIZ_K1
                 }, {
                     Descripcion: 'Forma pago interés > forma de pago aprobada',
-                    Estado: 'OK'
+                    Estado: respuestaSubsanarExcepciones.salida.Utilizaciones[0].IND_EXCEP_AMORTIZ_I1
                 }, {
                     Descripcion: 'Tasa solicitada < tasa política',
-                    Estado: 'OK'
-                }]
+                    Estado: respuestaSubsanarExcepciones.salida.Utilizaciones[0].IND_EXCEP_TASA
+                }, {
+                    Descripcion: 'Garantía diferente a hipoteca incompleta o inconsistente',
+                    Estado: respuestaSubsanarExcepciones.salida.Utilizaciones[0].IND_EXC_OTRAS_GARANT
+                }, {
+                    Descripcion: 'Pagaré mal diligenciado o incompleto',
+                    Estado: respuestaSubsanarExcepciones.salida.Utilizaciones[0].IND_EXC_PAGARE
+                }, {
+                    Descripcion: 'Forma pago capital > forma pago aprobada',
+                    Estado: respuestaSubsanarExcepciones.salida.Utilizaciones[0].IND_EXCEP_AMORTIZ_K2
+                }, {
+                    Descripcion: 'Forma pago interés > forma pago aprobada',
+                    Estado: respuestaSubsanarExcepciones.salida.Utilizaciones[0].IND_EXCEP_AMORTIZ_I2
+                }, {
+                    Descripcion: 'Garantía hipotecaria con boleta pendiente de registro',
+                    Estado: respuestaSubsanarExcepciones.salida.Utilizaciones[0].IND_EXC_GARANT_HIPOT
+                }, {
+                    Descripcion: 'Falta póliza seguro incendio y terremoto',
+                    Estado: respuestaSubsanarExcepciones.salida.Utilizaciones[0].IND_EXC_SEGURO_IT
+                }, {
+                    Descripcion: 'Falta póliza seguro vida',
+                    Estado: respuestaSubsanarExcepciones.salida.Utilizaciones[0].IND_EXC_SEGURO_VIDA
+                }, {
+                    Descripcion: 'Vigencia de la sociedad < fecha corte + plazo',
+                    Estado: respuestaSubsanarExcepciones.salida.Utilizaciones[0].IND_EXC_VIGENCIA_SOC
+                }, {
+                    Descripcion: 'Falta acta de junta o se exceden las facultades',
+                    Estado: respuestaSubsanarExcepciones.salida.Utilizaciones[0].IND_EXC_ACTA_JUNTAS
+                }, {
+                    Descripcion: 'Carta de instrucciones mal diligenciada o incompleta',
+                    Estado: respuestaSubsanarExcepciones.salida.Utilizaciones[0].IND_EXC_CARTA_INSTRUC
+                }, {
+                    Descripcion: 'Falta documento especial',
+                    Estado: respuestaSubsanarExcepciones.salida.Utilizaciones[0].IND_EXC_DOCUMENTO_ESP
+                }, {
+                    Descripcion: 'Falta estatutos',
+                    Estado: respuestaSubsanarExcepciones.salida.Utilizaciones[0].IND_EXC_ESTATUTOS
+                }, {
+                    Descripcion: 'Falta certificado vigencia sobre acta de junta',
+                    Estado: respuestaSubsanarExcepciones.salida.Utilizaciones[0].IND_EXC_VIGENCIA_ACTA
+                }, {
+                    Descripcion: 'Carta de intención mal diligenciada o incompleta',
+                    Estado: respuestaSubsanarExcepciones.salida.Utilizaciones[0].IND_EXC_CARTA_INTENCION
+                }, {
+                    Descripcion: 'CERL vencido (mas de 40 días de expedido)',
+                    Estado: respuestaSubsanarExcepciones.salida.Utilizaciones[0].IND_EXC_VTO_CERL
+                }, {
+                    Descripcion: 'Cliente con Excepciones pendientes por subsanar',
+                    Estado: respuestaSubsanarExcepciones.salida.Utilizaciones[0].IND_EXC_CARTA_INST_CODEU
+                }, {
+                    Descripcion: 'Visto Bueno Comercial por Montos Inferiores',
+                    Estado: respuestaSubsanarExcepciones.salida.Utilizaciones[0].IND_EXC_28
+                }, {
+                    Descripcion: 'Visto Bueno Comercial por Montos Superiores',
+                    Estado: respuestaSubsanarExcepciones.salida.Utilizaciones[0].IND_EXC_29
+                }, {
+                    Descripcion: 'Visto Bueno Credito',
+                    Estado: respuestaSubsanarExcepciones.salida.Utilizaciones[0].IND_EXC_30
+                }, {
+                    Descripcion: 'Contrato y/o Convenio mal diligenciado o incompleto',
+                    Estado: respuestaSubsanarExcepciones.salida.Utilizaciones[0].IND_EXC_31
+                }, ]
             };
             return ConsultaUtilizacionesSchema;
         } else {
