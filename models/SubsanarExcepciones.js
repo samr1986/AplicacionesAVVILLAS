@@ -186,7 +186,5 @@ module.exports.FncConsultarUtiliza = function(Modalidad, TipoOperacion, NSolicit
             }, ]
         };
     }
-
-}
-return ConsultaUtilizacionesSchema;
+    return ConsultaUtilizacionesSchema;
 };
