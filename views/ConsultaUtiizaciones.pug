@@ -108,16 +108,7 @@ append body
 							caption.text-center  Log VoBo Garantías
 							tbody
 								tr
-									tdtext-center(colspan="6") VoBo otras garantías
-								tr
-									td Usuario:
-									td #{datos.UsuarioGarHip}
-									td Fecha:
-									td #{datos.FechaGarHip}
-									td Hora:
-									td #{datos.HoraGarHip}
-								tr
-									tdtext-center(colspan="6") VoBo otras garantías
+									td.text-center(colspan="6") VoBo otras garantías
 								tr
 									td Usuario:
 									td #{datos.UsuarioGarOtr}
@@ -125,7 +116,17 @@ append body
 									td #{datos.FechaGarOtr}
 									td Hora:
 									td #{datos.HoraGarOtr}
-		button.btn-outline-secondary Excepciones/VoBo
-		button.btn-outline-secondary Detalle desembolso	
+								tr
+									td.text-center(colspan="6") VoBo garantías hipotecarias
+								tr
+									td Usuario:
+									td #{datos.UsuarioGarHip}
+									td Fecha:
+									td #{datos.FechaGarHip}
+									td Hora:
+									td #{datos.HoraGarHip}
+								
+		input.btn.outline-secondary Excepciones/VoBo
+		input.btn.outline-secondary Detalle desembolso	
 
 
