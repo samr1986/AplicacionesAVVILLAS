@@ -33,8 +33,8 @@ module.exports.FncConsultarUtiliza = function(Modalidad, TipoOperacion, NSolicit
     let url = 'https://ws-rest-creditoempresarial.azurewebsites.net/utilizaciones?TipoOperacion=' + TipoOperacion + '&NumeroSolicitud=' + NSolicitud + '&Modalidad=' + Modalidad;
     let respuestaSubsanarExcepciones = InvocaRestService.invocarServicio(metodo, url);
     let ConsultaUtilizacionesSchema = {
-        codigoRespuesta: '',
-        respuesta: '',
+        codigoRespuesta: respuestaSubsanarExcepciones.salida.codigoRespuesta,
+        respuesta: respuestaSubsanarExcepciones.salida.respuesta,
         TipoIdentificacion: '',
         NumeroIdentificacion: '',
         nombre: '',
@@ -60,7 +60,13 @@ module.exports.FncConsultarUtiliza = function(Modalidad, TipoOperacion, NSolicit
         SerialContrato: '',
         SerialFNG: '',
         ReservaFNG: '',
-        ConsCodExcep: []
+        ConsCodExcep: [],
+        UsuarioGarHip: '',
+        FechaGarHip: '',
+        HoraGarHip: '',
+        UsuarioGarOtr: '',
+        FechaGarOtr: '',
+        HoraGarOtr: ''
     }
     if (respuestaSubsanarExcepciones.salida.codigoRespuesta == 0) {
         if (respuestaSubsanarExcepciones.salida.Utilizaciones.length == 1) {
@@ -183,7 +189,13 @@ module.exports.FncConsultarUtiliza = function(Modalidad, TipoOperacion, NSolicit
             }, {
                 Descripcion: 'Contrato y/o Convenio mal diligenciado o incompleto',
                 Estado: respuestaSubsanarExcepciones.salida.Utilizaciones[0].IND_EXC_31
-            }, ]
+            }, ];
+            ConsultaUtilizacionesSchema.UsuarioGarHip = respuestaSubsanarExcepciones.salida.Utilizaciones[0].USUARIO_HIP;
+            ConsultaUtilizacionesSchema.FechaGarHip = respuestaSubsanarExcepciones.salida.Utilizaciones[0].FECHA_HIP;
+            ConsultaUtilizacionesSchema.HoraGarHip = respuestaSubsanarExcepciones.salida.Utilizaciones[0].HORA_HIP;
+            ConsultaUtilizacionesSchema.UsuarioGarOtr = respuestaSubsanarExcepciones.salida.Utilizaciones[0].USUARIO_OGA;
+            ConsultaUtilizacionesSchema.FechaGarOtr = respuestaSubsanarExcepciones.salida.Utilizaciones[0].FECHA_OGA;
+            ConsultaUtilizacionesSchema.HoraGarOtr = respuestaSubsanarExcepciones.salida.Utilizaciones[0].HORA_OGA;
         };
     }
     return ConsultaUtilizacionesSchema;

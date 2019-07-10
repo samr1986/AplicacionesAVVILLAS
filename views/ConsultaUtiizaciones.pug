@@ -103,6 +103,29 @@ append body
 										td #{index + 1}
 										td #{excep.Descripcion}
 										td #{excep.Estado}
-		
+					.table-responsive
+						table.table.table-bordered.table-hover(name="tblLogVoBo",summary="contiene los datos de usuarios que dieron VoBo de garanrias")
+							caption.text-center  Log VoBo Garantías
+							tbody
+								tr
+									tdtext-center(colspan="6") VoBo otras garantías
+								tr
+									td Usuario:
+									td #{datos.UsuarioGarHip}
+									td Fecha:
+									td #{datos.FechaGarHip}
+									td Hora:
+									td #{datos.HoraGarHip}
+								tr
+									tdtext-center(colspan="6") VoBo otras garantías
+								tr
+									td Usuario:
+									td #{datos.UsuarioGarOtr}
+									td Fecha:
+									td #{datos.FechaGarOtr}
+									td Hora:
+									td #{datos.HoraGarOtr}
+		button.btn-outline-secondary Excepciones/VoBo
+		button.btn-outline-secondary Detalle desembolso	
 
 
