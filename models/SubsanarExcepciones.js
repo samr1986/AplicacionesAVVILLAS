@@ -103,6 +103,7 @@ module.exports.FncConsultarUtiliza = function(Modalidad, TipoOperacion, NSolicit
             ConsultaUtilizacionesSchema.ConsCodExcep = [{
                 //Descripcion: 'Cupo vencido',
                 //Descripcion: JSON.stringify(jsonQuery('ExcepcionesEmpresariales[Codigo_Excepcion=1].Descripcion', { data: respuestaExcepcionesEmpresariales.ExcepcionesEmpresariales }).value),
+                //Descripcion: JSON.stringify(jsonQuery('ExcepcionesEmpresariales[Codigo_Excepcion=1].Descripcion', { data: respuestaExcepcionesEmpresariales.ExcepcionesEmpresariales }).value),
                 Descripcion: JSON.stringify(respuestaExcepcionesEmpresariales.ExcepcionesEmpresariales),
                 Estado: respuestaSubsanarExcepciones.salida.Utilizaciones[0].IND_EXCEP_VENCIMIENTO
             }, {
