@@ -101,8 +101,8 @@ module.exports.FncConsultarUtiliza = function(Modalidad, TipoOperacion, NSolicit
             ConsultaUtilizacionesSchema.SerialFNG = respuestaSubsanarExcepciones.salida.Utilizaciones[0].SERIAL_ACEPTACION_FNG;
             ConsultaUtilizacionesSchema.ReservaFNG = respuestaSubsanarExcepciones.salida.Utilizaciones[0].RESERVA_FNG;
             ConsultaUtilizacionesSchema.ConsCodExcep = [{
-                //Descripcion: 'Cupo vencido',
-                Descripcion: jsonQuery('ExcepcionesEmpresariales[Codigo_Excepcion=1].Descripcion', { data: respuestaExcepcionesEmpresariales.ExcepcionesEmpresariales }).value,
+                Descripcion: 'Cupo vencido',
+                //Descripcion: jsonQuery('ExcepcionesEmpresariales[Codigo_Excepcion=1].Descripcion', { data: respuestaExcepcionesEmpresariales.ExcepcionesEmpresariales }).value,
                 Estado: respuestaSubsanarExcepciones.salida.Utilizaciones[0].IND_EXCEP_VENCIMIENTO
             }, {
                 Descripcion: 'Extracupo por grupo',
