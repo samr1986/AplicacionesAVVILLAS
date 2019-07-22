@@ -33,8 +33,8 @@ module.exports.FncConsultarUtiliza = function(Modalidad, TipoOperacion, NSolicit
     let metodo = 'GET'
     let url = 'https://ws-rest-creditoempresarial.azurewebsites.net/utilizaciones?TipoOperacion=' + TipoOperacion + '&NumeroSolicitud=' + NSolicitud + '&Modalidad=' + Modalidad;
     let respuestaSubsanarExcepciones = InvocaRestService.invocarServicio(metodo, url);
-    let metodo = 'GET'
-    let url = 'https://ws-rest-creditoempresarial.azurewebsites.net/ExcepcionesEmpresariales';
+    metodo = 'GET'
+    url = 'https://ws-rest-creditoempresarial.azurewebsites.net/ExcepcionesEmpresariales';
     let respuestaExcepcionesEmpresariales = InvocaRestService.invocarServicio(metodo, url);
     let ConsultaUtilizacionesSchema = {
         codigoRespuesta: respuestaSubsanarExcepciones.salida.codigoRespuesta,
