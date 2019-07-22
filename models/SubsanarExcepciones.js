@@ -1,3 +1,4 @@
+const jsonQuery = require('json-query');
 module.exports.FncConsultarExcep = function(ID) {
     let InvocaRestService = require("../models/Invocarservicio");
     let metodo = 'GET'
@@ -32,6 +33,9 @@ module.exports.FncConsultarUtiliza = function(Modalidad, TipoOperacion, NSolicit
     let metodo = 'GET'
     let url = 'https://ws-rest-creditoempresarial.azurewebsites.net/utilizaciones?TipoOperacion=' + TipoOperacion + '&NumeroSolicitud=' + NSolicitud + '&Modalidad=' + Modalidad;
     let respuestaSubsanarExcepciones = InvocaRestService.invocarServicio(metodo, url);
+    let metodo = 'GET'
+    let url = 'https://ws-rest-creditoempresarial.azurewebsites.net/ExcepcionesEmpresariales';
+    let respuestaExcepcionesEmpresariales = InvocaRestService.invocarServicio(metodo, url);
     let ConsultaUtilizacionesSchema = {
         codigoRespuesta: respuestaSubsanarExcepciones.salida.codigoRespuesta,
         respuesta: respuestaSubsanarExcepciones.salida.respuesta,
@@ -97,7 +101,8 @@ module.exports.FncConsultarUtiliza = function(Modalidad, TipoOperacion, NSolicit
             ConsultaUtilizacionesSchema.SerialFNG = respuestaSubsanarExcepciones.salida.Utilizaciones[0].SERIAL_ACEPTACION_FNG;
             ConsultaUtilizacionesSchema.ReservaFNG = respuestaSubsanarExcepciones.salida.Utilizaciones[0].RESERVA_FNG;
             ConsultaUtilizacionesSchema.ConsCodExcep = [{
-                Descripcion: 'Cupo vencido',
+                //Descripcion: 'Cupo vencido',
+                Descripcion: jsonQuery('ExcepcionesEmpresariales[Codigo_Excepcion=1].Descripcion', { data: respuestaExcepcionesEmpresariales.ExcepcionesEmpresariales }).value,
                 Estado: respuestaSubsanarExcepciones.salida.Utilizaciones[0].IND_EXCEP_VENCIMIENTO
             }, {
                 Descripcion: 'Extracupo por grupo',

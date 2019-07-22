@@ -17,6 +17,7 @@
     "http-errors": "^1.7.2",
     "jade": "^1.11.0",
     "jade-bootstrap": "^1.0.14",
+    "json-query": "^2.2.2",
     "mongoose": "^5.5.14",
     "morgan": "^1.9.1",
     "pug": "^2.0.3",
