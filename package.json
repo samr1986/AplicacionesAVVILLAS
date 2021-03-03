@@ -20,7 +20,7 @@
     "json-query": "^2.2.2",
     "mongoose": "^5.5.14",
     "morgan": "^1.9.1",
-    "pug": "^2.0.3",
+    "pug": "^3.0.1",
     "request": "^2.88.0",
     "sync-request": "^6.1.0"
   }
